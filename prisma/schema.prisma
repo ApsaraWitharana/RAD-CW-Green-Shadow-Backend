@@ -9,30 +9,26 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Staff {
-  id           Int         @id @default(autoincrement())
-  firstName    String?
-  lastName     String?
-  designation  String?
-  gender       GenderEnum?
-  joinedDate   DateTime?
-  dob          DateTime?
-  addressLine1 String?
-  addressLine2 String?
-  addressLine3 String?
-  addressLine4 String?
-  addressLine5 String?
-  contactNo    String?
-  email        String      @unique
-  role         RoleEnum?
-  // vehicles          Vehicle[]           @relation("StaffVehicles")
-  // equipment         Equipment?          @relation("StaffEquipment")
-  // staffLogDetails   StaffLogDetails[]
-  // staffFieldDetails StaffFieldDetails[]
+  id            Int         @id @default(autoincrement())
+  firstName     String?
+  lastName      String?
+  designation   String?
+  gender        GenderEnum?
+  joinedDate    String?
+  dob           String?
+  addressLine1  String?
+  addressLine2  String?
+  addressLine3  String?
+  addressLine4  String?
+  addressLine5  String?
+  contactNumber String?
+  email         String      @unique
+  role          RoleEnum?
 }
 
 enum GenderEnum {
@@ -46,28 +42,3 @@ enum RoleEnum {
   MANAGER
   EMPLOYEE
 }
-
-//
-// model Vehicle {
-//   id       Int    @id @default(autoincrement())
-//   usedBy   Staff? @relation("StaffVehicles", fields: [usedById], references: [id])
-//   usedById Int?
-// }
-//
-// model Equipment {
-//   id      Int    @id @default(autoincrement())
-//   staff   Staff? @relation("StaffEquipment", fields: [staffId], references: [id])
-//   staffId Int?
-// }
-//
-// model StaffLogDetails {
-//   id      Int    @id @default(autoincrement())
-//   staff   Staff? @relation(fields: [staffId], references: [id])
-//   staffId Int?
-// }
-//
-// model StaffFieldDetails {
-//   id      Int    @id @default(autoincrement())
-//   staff   Staff? @relation(fields: [staffId], references: [id])
-//   staffId Int?
-// }
