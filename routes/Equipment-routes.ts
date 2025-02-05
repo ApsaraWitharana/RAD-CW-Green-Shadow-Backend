@@ -15,6 +15,8 @@ const router = express.Router();
      }
  });
 
+
+
  //delete
  router.delete("/delete/:equipmentCode",async (req,res)=>{
      const {equipmentCode} = req.params;
@@ -22,7 +24,7 @@ const router = express.Router();
      try {
          const deletedEquipment = await deleteEquipment(equipmentCode);
          res.json(deletedEquipment);
-         res.send("Failed to delete");
+         res.send("equipment deleted");
 
      }catch (err){
          console.log("error delete equipment",err);

@@ -46,6 +46,17 @@ model Equipment {
   staffCode     String?
 }
 
+model Crop {
+  id                 Int    @id @default(autoincrement())
+  cropCode           String @unique
+  cropCommonName     String
+  cropScientificName String
+  cropImage          String
+  category           String
+  cropSeason         String
+  fieldCode          String
+}
+
 enum GenderEnum {
   MALE
   FEMALE
