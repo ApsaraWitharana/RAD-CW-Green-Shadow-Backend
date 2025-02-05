@@ -1,6 +1,8 @@
 import express from "express";
-import {Field,PrismaClient} from "@prisma/client";
-import e from "express";
+import {PrismaClient} from "@prisma/client";
+import {Field} from "../model/Field";
+
+
 const router = express.Router();
 const prisma = new PrismaClient();
 
@@ -10,6 +12,7 @@ export async function addField(field:Field){
 
         const newField = await prisma.field.create({
             data:{
+                fieldCode:field.fieldCode,
                 fieldName:field.fieldName,
                 fieldLocation:field.fieldLocation,
                 extentSize:field.extentSize,
@@ -24,7 +27,7 @@ export async function addField(field:Field){
     }
 }
 
-export async function deleteField(fieldCode:number){
+export async function deleteField(fieldCode:string){
     try {
         const deleteField = await prisma.field.delete({
             where:{
@@ -38,14 +41,13 @@ export async function deleteField(fieldCode:number){
     }
 }
 
-export async function updateField(fieldCode:number,field:Field){
+export async function updateField(fieldCode:string,field:Field){
     try {
         const updateField = await prisma.field.update({
             where:{
                 fieldCode:fieldCode,
             },
             data:{
-                fieldCode:field.fieldCode,
                 fieldName:field.fieldName,
                 fieldLocation:field.fieldLocation,
                 extentSize:field.extentSize,
@@ -67,3 +69,5 @@ export async function getField(){
         console.log("error getting field from prisma data",err);
     }
 }
+
+export default router;

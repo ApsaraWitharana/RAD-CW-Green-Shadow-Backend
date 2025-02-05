@@ -1,5 +1,5 @@
 import express from "express";
-import {Staff,PrismaClient} from "@prisma/client";
+import {PrismaClient, Staff} from "@prisma/client";
 const router = express.Router();
 
 const prisma = new PrismaClient();
@@ -8,6 +8,7 @@ export async function addStaff(staff:Staff){
     try {
        const newStaff = await prisma.staff.create({
             data:{
+                staffId:staff.staffId,
                 firstName:staff.firstName,
                 lastName:staff.lastName,
                 designation:staff.designation,
@@ -31,25 +32,25 @@ export async function addStaff(staff:Staff){
     }
 }
 
-export async function deleteStaff(id:number){
+export async function deleteStaff(staffId:string){
     try {
       const deleteStaff =  await prisma.staff.delete({
             where:{
-                id:id,
+                staffId:staffId,
             }
         })
-        console.log('Staff delete Successfully!!',id);
+        console.log('Staff delete Successfully!!',staffId);
        return deleteStaff;
     }catch (err){
         console.log("delete staff ",err);
     }
 }
 
-export async function updateStaff(id:number,staff:Staff){
+export async function updateStaff(staffId:string,staff:Staff){
     try {
      const updateStaff =   await prisma.staff.update({
             where:{
-                id:id,
+                staffId:staffId,
             },
             data:{
                 firstName:staff.firstName,

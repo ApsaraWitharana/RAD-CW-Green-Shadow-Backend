@@ -20,7 +20,7 @@ router.post("/add",async (req,res)=>{
 
 //delete
 router.delete("/delete/:fieldCode",async (req,res)=>{
-    const fieldCode = +req.params.fieldCode;
+    const {fieldCode} = req.params;
     try {
         const deletedField = await deleteField(fieldCode);
         res.json(deletedField);
@@ -32,7 +32,7 @@ router.delete("/delete/:fieldCode",async (req,res)=>{
 
 //update
 router.put('/update/:fieldCode',async (req,res)=>{
-    const fieldCode = +req.params.fieldCode;
+    const {fieldCode} = req.params;
     const field = req.body;
     try {
         const updatedField = await updateField(fieldCode,field);
@@ -43,8 +43,8 @@ router.put('/update/:fieldCode',async (req,res)=>{
     }
 });
 
-//get all
 
+//get all
 router.get('/get',async (req,res)=>{
     try {
         const fields = await getField();

@@ -9,6 +9,7 @@ datasource db {
 
 model Staff {
   id            Int        @id @default(autoincrement())
+  staffId       String     @unique
   firstName     String?
   lastName      String?
   designation   String?
@@ -26,12 +27,23 @@ model Staff {
 }
 
 model Field {
-  fieldCode     Int     @id @default(autoincrement())
+  id            Int     @id @default(autoincrement())
+  fieldCode     String  @unique
   fieldName     String
   fieldLocation String
   extentSize    Int
   fieldImage1   String?
   fieldImage2   String?
+}
+
+model Equipment {
+  id            Int     @id @default(autoincrement())
+  equipmentCode String  @unique
+  equipmentName String
+  equipmentType String
+  status        String
+  fieldCode     String?
+  staffCode     String?
 }
 
 enum GenderEnum {

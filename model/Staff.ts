@@ -3,7 +3,7 @@ import {RoleEnum} from "../util/RoleEnum";
 
 
 export class Staff {
-    id: string;
+    staffId: string;
     firstName: string;
     lastName: string;
     designation: string;
@@ -20,8 +20,8 @@ export class Staff {
     role: RoleEnum;
 
 
-    constructor(id: string, firstName: string, lastName: string, designation: string, gender: GenderEnum, joinedDate: string, dob: string, addressLine1: string, addressLine2: string, addressLine3: string, addressLine4: string, addressLine5: string, contactNumber: string, email: string, role: RoleEnum) {
-        this.id = id;
+    constructor(staffId: string, firstName: string, lastName: string, designation: string, gender: GenderEnum, joinedDate: string, dob: string, addressLine1: string, addressLine2: string, addressLine3: string, addressLine4: string, addressLine5: string, contactNumber: string, email: string, role: RoleEnum) {
+        this.staffId = staffId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.designation = designation;

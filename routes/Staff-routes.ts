@@ -14,11 +14,11 @@ router.post("/add", async (req, res) => {
 });
 
 // delete
-router.delete("/delete/:id",async (req, res) => {
+router.delete("/delete/:staffId",async (req, res) => {
 
-    const id = +req.params.id;
+    const {staffId} = req.params;
     try {
-        const deletedStaff = await deleteStaff(id);
+        const deletedStaff = await deleteStaff(staffId);
         res.json(deletedStaff);
         res.send('staff deleted');
     }catch (err){
@@ -27,12 +27,12 @@ router.delete("/delete/:id",async (req, res) => {
 });
 
 //update
-router.put('/update/:id',async (req, res) =>{
+router.put('/update/:staffId',async (req, res) =>{
 
-    const id = +req.params.id;
+    const {staffId} = req.params;
     const staff = req.body;
     try {
-        const updatedStaff = await updateStaff(id,staff);
+        const updatedStaff = await updateStaff(staffId,staff);
         res.json(updatedStaff);
         res.send('staff updated')
     }catch (err){
