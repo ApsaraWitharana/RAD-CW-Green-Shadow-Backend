@@ -1,6 +1,5 @@
 import express from "express";
-import {addEquipment, deleteEquipment} from "../controller/EquipmentController";
-import e from "express";
+import {addEquipment, deleteEquipment, getEquipment, updateEquipment} from "../controller/EquipmentController";
 
 const router = express.Router();
 
@@ -16,6 +15,7 @@ const router = express.Router();
      }
  });
 
+ //delete
  router.delete("/delete/:equipmentCode",async (req,res)=>{
      const {equipmentCode} = req.params;
 
@@ -28,4 +28,31 @@ const router = express.Router();
          console.log("error delete equipment",err);
      }
  })
+
+//update
+router.put("/update/:equipmentCode",async (req,res)=>{
+    const {equipmentCode} = req.params;
+    const equipment = req.body;
+
+    try {
+        const updatedEquipment = await updateEquipment(equipmentCode,equipment);
+        res.json(updatedEquipment);
+        res.send("equipment update successfully!!");
+    }catch (err){
+        console.log("error update equipment",err);
+    }
+});
+
+
+//get all
+router.get('/get',async (req,res)=>{
+    try {
+        const equipments = await getEquipment();
+        res.json(equipments);
+        res.send('get all equipment');
+    }catch (err){
+        console.log("error getting equipment",err);
+    }
+});
+
 export default router;
