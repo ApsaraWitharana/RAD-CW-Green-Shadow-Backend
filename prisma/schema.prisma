@@ -57,6 +57,17 @@ model Crop {
   fieldCode          String
 }
 
+model Vehicle {
+  id                 Int    @id @default(autoincrement())
+  vehicleCode        String @unique
+  licensePlateNumber Int
+  vehicleCategory    String
+  fuelType           String
+  status             String
+  staffId            String
+  remarks            String
+}
+
 enum GenderEnum {
   MALE
   FEMALE

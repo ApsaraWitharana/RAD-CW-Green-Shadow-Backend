@@ -3,6 +3,7 @@ import StaffRoutes from "./routes/Staff-routes";
 import FieldRoutes from "./routes/Field-routes";
 import EquipmentRoutes from "./routes/Equipment-routes";
 import CropRoutes from "./routes/Crop-routes";
+import VehicleRoutes from "./routes/Vehicle-routes";
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use('/staff',StaffRoutes);
 app.use('/field',FieldRoutes);
 app.use('/equipment',EquipmentRoutes);
 app.use('/crop',CropRoutes);
+app.use('/vehicle',VehicleRoutes);
+
 
 
 app.listen(3000, () => {
