@@ -68,6 +68,15 @@ model Vehicle {
   remarks            String
 }
 
+model Monitoring {
+  id            Int    @id @default(autoincrement())
+  logCode       String @unique
+  logDate       String
+  logDetails    String
+  observedImage String
+  cropCode      String
+}
+
 enum GenderEnum {
   MALE
   FEMALE

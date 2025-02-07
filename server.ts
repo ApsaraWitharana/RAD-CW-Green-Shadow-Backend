@@ -4,6 +4,7 @@ import FieldRoutes from "./routes/Field-routes";
 import EquipmentRoutes from "./routes/Equipment-routes";
 import CropRoutes from "./routes/Crop-routes";
 import VehicleRoutes from "./routes/Vehicle-routes";
+import MonitoringRoutes from "./routes/Monitoring-routes";
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use('/field',FieldRoutes);
 app.use('/equipment',EquipmentRoutes);
 app.use('/crop',CropRoutes);
 app.use('/vehicle',VehicleRoutes);
-
+app.use('/log',MonitoringRoutes);
 
 
 app.listen(3000, () => {

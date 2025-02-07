@@ -55,7 +55,7 @@ export async function updateField(fieldCode:string,field:Field){
                 fieldImage2:field.fieldImage2,
             }
         })
-        console.log("field update successfully!!",updateField)
+        console.log("field update successfully!!",updateField);
         return updateField;
     }catch (err){
         console.log("error update field",err);
